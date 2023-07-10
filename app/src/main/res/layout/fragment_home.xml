@@ -24,11 +24,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_filter"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_app_title"
             app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/ic_bookmark_active" />
+            app:layout_constraintTop_toTopOf="@id/tv_app_title" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_disney_characte"
