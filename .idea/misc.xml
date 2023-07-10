@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_baseline_bookmark_border_24.xml" value="0.107" />
+        <entry key="app/src/main/res/drawable/ic_bookmark_active.xml" value="0.107" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/layout/item_characters.xml" value="0.28125" />
       </map>
