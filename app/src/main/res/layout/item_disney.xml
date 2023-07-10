@@ -7,7 +7,7 @@
     android:layout_marginTop="16dp">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cv_character"
+        android:id="@+id/cv_disney"
         android:layout_width="80dp"
         android:layout_height="100dp"
         app:cardCornerRadius="15dp"
@@ -16,7 +16,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
-            android:id="@+id/img_character"
+            android:id="@+id/img_disney"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -36,7 +36,7 @@
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/ll_tv_shows"
-        app:layout_constraintStart_toEndOf="@id/cv_character"
+        app:layout_constraintStart_toEndOf="@id/cv_disney"
         app:layout_constraintEnd_toStartOf="@id/btn_favorite" />
 
     <LinearLayout
@@ -47,7 +47,7 @@
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/tv_name"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/cv_character"
+        app:layout_constraintStart_toEndOf="@id/cv_disney"
         app:layout_constraintEnd_toStartOf="@id/btn_favorite">
 
         <TextView
