@@ -8,7 +8,7 @@ import retrofit2.http.Query
 interface ApiService {
     fun getGames(
         @Query("pageNumber")
-        pageNumber: String,
+        pageNumber: Int,
         @Query("pageSize")
         pageSize: String = "15"
     ): Single<GameResponse>
