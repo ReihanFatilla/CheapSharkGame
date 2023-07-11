@@ -6,6 +6,6 @@ import com.ewide.test.core.domain.usecase.home.HomeInteractor
 import com.ewide.test.core.domain.usecase.home.HomeUseCase
 import org.koin.dsl.module
 
-val useCaseModule = module {
+val repositoryModule = module {
     single<HomeRepository> { HomeRepositoryImpl(get()) }
 }
