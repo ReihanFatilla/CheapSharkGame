@@ -31,7 +31,7 @@ class GamePagingSource(val remoteDataSource: RemoteDataSource) : RxPagingSource<
             .onErrorReturn { LoadResult.Error(it) }
     }
 
-    fun toLoadResult(games: List<Game>, prevKey: Int?, nextKey: Int?): LoadResult<Int, Game> {
+    private fun toLoadResult(games: List<Game>, prevKey: Int?, nextKey: Int?): LoadResult<Int, Game> {
         return LoadResult.Page(games, prevKey, nextKey)
     }
 }
