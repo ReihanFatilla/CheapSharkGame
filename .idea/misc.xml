@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/bg_nav_bar.xml" value="0.107" />
+        <entry key="app/src/main/res/drawable/bg_searchview.xml" value="0.1255" />
         <entry key="app/src/main/res/drawable/ic_baseline_bookmark_border_24.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/ic_bookmark_active.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/ic_favorite.xml" value="0.107" />
@@ -11,10 +12,14 @@
         <entry key="app/src/main/res/drawable/ic_favorite_outline.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/nav_item_color.xml" value="0.107" />
+        <entry key="app/src/main/res/drawable/strikethrough.xml" value="0.1255" />
+        <entry key="app/src/main/res/drawable/strip_horizontal.xml" value="0.1255" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/item_characters.xml" value="0.325628662109375" />
+        <entry key="app/src/main/res/layout/item_disney.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/item_game.xml" value="0.28125" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.28229166666666666" />
       </map>
     </option>

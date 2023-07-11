@@ -7,16 +7,16 @@
     android:layout_marginTop="16dp">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cv_disney"
-        android:layout_width="80dp"
-        android:layout_height="100dp"
+        android:id="@+id/cv_game"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
         app:cardCornerRadius="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
-            android:id="@+id/img_disney"
+            android:id="@+id/img_game"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -28,47 +28,47 @@
         android:id="@+id/tv_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:text="Vanellope"
+        android:layout_marginHorizontal="20dp"
+        android:text="Batman: Arkham VR"
         android:textColor="@color/black"
         android:textSize="17sp"
         android:fontFamily="@font/inter_semibold"
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/ll_tv_shows"
-        app:layout_constraintStart_toEndOf="@id/cv_disney"
+        app:layout_constraintBottom_toTopOf="@id/tv_price"
+        app:layout_constraintStart_toEndOf="@id/cv_game"
         app:layout_constraintEnd_toStartOf="@id/btn_favorite" />
 
-    <LinearLayout
-        android:id="@+id/ll_tv_shows"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/tv_price"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
+        android:layout_marginHorizontal="20dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/tv_name"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/cv_disney"
-        app:layout_constraintEnd_toStartOf="@id/btn_favorite">
+        app:layout_constraintStart_toEndOf="@id/cv_game"
+        app:layout_constraintEnd_toStartOf="@id/btn_favorite" >
 
         <TextView
-            android:id="@+id/tv_from"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="from "
-            android:textColor="@color/gray"
+            android:text="$2.99"
+            android:textColor="@color/black"
             android:textSize="13sp"
             android:fontFamily="@font/inter_medium" />
 
         <TextView
-            android:id="@+id/tv_shows"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Wreck-It-Ralph"
-            android:textColor="@color/black"
+            android:text="$19.99"
+            android:foreground="@drawable/strikethrough"
+            android:layout_marginStart="6dp"
+            android:textColor="@color/gray"
             android:textSize="13sp"
-            android:fontFamily="@font/inter_medium"/>
+            android:fontFamily="@font/inter_medium" />
 
-    </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <ImageView
         android:id="@+id/btn_favorite"
