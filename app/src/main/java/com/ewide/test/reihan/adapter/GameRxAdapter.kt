@@ -19,8 +19,8 @@ class GameRxAdapter: PagingDataAdapter<Game, GameRxAdapter.GameViewHolder>(DIFF_
             with(getItem(position)){
                 if (this == null) return
                 tvTitle.text = title
-                tvNormalPrice.text = normalPrice
-                tvSalePrice.text = salePrice
+                tvNormalPrice.text = "$$normalPrice"
+                tvSalePrice.text = "$$salePrice"
                 Glide.with(root.context)
                     .load(thumbUrl)
                     .into(imgGame)
