@@ -5,5 +5,5 @@ import com.ewide.test.core.domain.model.game.Game
 import io.reactivex.rxjava3.core.Flowable
 
 interface HomeRepository {
-    fun getDisneyCharacters(): Flowable<PagingData<Game>>
+    fun getGames(): Flowable<PagingData<Game>>
 }

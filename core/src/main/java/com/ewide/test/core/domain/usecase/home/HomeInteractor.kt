@@ -6,7 +6,7 @@ import com.ewide.test.core.domain.repository.home.HomeRepository
 import io.reactivex.rxjava3.core.Flowable
 
 class HomeInteractor(val homeRepository: HomeRepository): HomeUseCase {
-    override fun getDisneyCharacters(): Flowable<PagingData<Game>> {
-        return homeRepository.getDisneyCharacters()
+    override fun getGames(): Flowable<PagingData<Game>> {
+        return homeRepository.getGames()
     }
 }
