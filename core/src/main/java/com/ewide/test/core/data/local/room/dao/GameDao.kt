@@ -1,7 +1,7 @@
-package com.ewide.test.core.data.local.room
+package com.ewide.test.core.data.local.room.dao
 
 import androidx.room.*
-import com.ewide.test.core.data.local.room.GameEntity
+import com.ewide.test.core.data.local.room.entity.GameEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

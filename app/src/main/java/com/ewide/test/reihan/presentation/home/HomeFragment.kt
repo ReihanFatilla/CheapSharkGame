@@ -1,13 +1,12 @@
 package com.ewide.test.reihan.presentation.home
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ewide.test.reihan.adapter.GameRxAdapter
+import com.ewide.test.reihan.adapter.GamePagingAdapter
 import com.ewide.test.reihan.databinding.FragmentHomeBinding
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -34,7 +33,7 @@ class HomeFragment : Fragment() {
 
     private fun setUpRecyclerView() {
         binding.rvGames.apply {
-            val mAdapter = GameRxAdapter()
+            val mAdapter = GamePagingAdapter()
             mDisposable.add(viewModel.getGames().subscribe{
                 mAdapter.submitData(lifecycle, it)
             })

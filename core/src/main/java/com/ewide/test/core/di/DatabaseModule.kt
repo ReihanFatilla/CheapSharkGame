@@ -1,7 +1,7 @@
 package com.ewide.test.core.di
 
 import androidx.room.Room
-import com.ewide.test.core.data.local.room.GameDatabase
+import com.ewide.test.core.data.local.room.database.GameDatabase
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
 import org.koin.android.ext.koin.androidContext

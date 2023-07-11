@@ -1,6 +1,5 @@
 package com.ewide.test.reihan.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -10,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.ewide.test.core.domain.model.game.Game
 import com.ewide.test.reihan.databinding.ItemGameBinding
 
-class GameRxAdapter: PagingDataAdapter<Game, GameRxAdapter.GameViewHolder>(DIFF_CALLBACK) {
+class GamePagingAdapter: PagingDataAdapter<Game, GamePagingAdapter.GameViewHolder>(DIFF_CALLBACK) {
 
     class GameViewHolder(val binding: ItemGameBinding): RecyclerView.ViewHolder(binding.root)
 

@@ -1,4 +1,4 @@
-package com.ewide.test.core.data.local.room
+package com.ewide.test.core.data.local.room.entity
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo
