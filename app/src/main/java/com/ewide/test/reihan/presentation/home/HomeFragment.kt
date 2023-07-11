@@ -18,8 +18,6 @@ class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModel()
 
-    private val mDisposable = CompositeDisposable()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -34,9 +32,9 @@ class HomeFragment : Fragment() {
     private fun setUpRecyclerView() {
         binding.rvGames.apply {
             val mAdapter = GamePagingAdapter()
-            mDisposable.add(viewModel.getGames().subscribe{
+            viewModel.gameResponse.subscribe{
                 mAdapter.submitData(lifecycle, it)
-            })
+            }
             adapter = mAdapter
             layoutManager = LinearLayoutManager(context)
         }
@@ -44,7 +42,6 @@ class HomeFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        mDisposable.dispose()
         _binding = null
     }
 }

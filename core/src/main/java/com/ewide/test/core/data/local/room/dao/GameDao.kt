@@ -14,9 +14,9 @@ interface GameDao {
     fun getGameById(id: String): Flow<GameEntity?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertFavorite(user: GameEntity)
+    suspend fun insertFavorite(game: GameEntity)
 
     @Delete
-    suspend fun deleteFavorite(user: GameEntity)
+    suspend fun deleteFavorite(game: GameEntity)
 
 }

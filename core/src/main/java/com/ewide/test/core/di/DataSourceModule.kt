@@ -6,5 +6,5 @@ import org.koin.dsl.module
 
 val dataSourceModule = module {
     factory { RemoteDataSource(get()) }
-    factory { LocalDataSource(get()) }
+    factory { LocalDataSource(get(), get()) }
 }

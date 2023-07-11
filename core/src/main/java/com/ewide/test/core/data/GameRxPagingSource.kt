@@ -10,7 +10,7 @@ import com.ewide.test.core.mapper.GameMapper.mapToGame
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class GameRxPagingSource(val remoteDataSource: RemoteDataSource, val gameDatabase: GameDatabase) : RxPagingSource<Int, Game>() {
+class GameRxPagingSource(val remoteDataSource: RemoteDataSource) : RxPagingSource<Int, Game>() {
     override fun getRefreshKey(state: PagingState<Int, Game>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)
