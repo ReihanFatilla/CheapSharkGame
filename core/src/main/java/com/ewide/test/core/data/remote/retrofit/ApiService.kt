@@ -16,6 +16,15 @@ interface ApiService {
         pageSize: String = "15",
     ): Single<List<GameResponse>>
 
+    @GET("deals")
+    fun getGamesBySort(
+        @Query("pageNumber")
+        pageNumber: Int,
+        @Query("sortBy")
+        sortBy: String,
+        @Query("pageSize")
+        pageSize: String = "15",
+    ): Single<List<GameResponse>>
 
     @GET("deals")
     fun searchGames(
@@ -32,6 +41,18 @@ interface ApiService {
         @Query("title")
         query: String,
         @Query("pageSize")
-        pageSize: String = "15",
+        pageSize: String = "30",
     ): Flowable<List<GameResponse>>
+
+    @GET("deals")
+    fun searchGamesBySort(
+        @Query("title")
+        query: String,
+        @Query("sortBy")
+        sortBy: String,
+        @Query("pageNumber")
+        pageNumber: Int,
+        @Query("pageSize")
+        pageSize: String = "15",
+    ): Single<List<GameResponse>>
 }

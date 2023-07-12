@@ -6,8 +6,10 @@ import androidx.paging.PagingData
 import androidx.paging.rxjava3.flowable
 import com.ewide.test.core.data.GameRxPagingSource
 import com.ewide.test.core.data.remote.RemoteDataSource
+import com.ewide.test.core.domain.model.SortType
 import com.ewide.test.core.domain.model.game.Game
 import com.ewide.test.core.domain.repository.home.HomeRepository
+import com.ewide.test.core.utils.Utils.formatSortType
 import io.reactivex.rxjava3.core.Flowable
 
 class HomeRepositoryImpl(val remoteDataSource: RemoteDataSource) : HomeRepository {
@@ -20,12 +22,30 @@ class HomeRepositoryImpl(val remoteDataSource: RemoteDataSource) : HomeRepositor
         ).flowable
     }
 
+    override fun getGamesBySort(sortBy: SortType): Flowable<PagingData<Game>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 15
+            ),
+            pagingSourceFactory = { GameRxPagingSource { remoteDataSource.getGamesBySort(it, sortBy.name.formatSortType()) } }
+        ).flowable
+    }
+
     override fun searchGames(query: String): Flowable<PagingData<Game>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 15
             ),
             pagingSourceFactory = { GameRxPagingSource { remoteDataSource.searchGames(query, it) } }
+        ).flowable
+    }
+
+    override fun searchGamesBySort(query: String, sortBy: SortType): Flowable<PagingData<Game>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 15
+            ),
+            pagingSourceFactory = { GameRxPagingSource { remoteDataSource.searchGamesBySort(query, sortBy.name.formatSortType(), it) } }
         ).flowable
     }
 }

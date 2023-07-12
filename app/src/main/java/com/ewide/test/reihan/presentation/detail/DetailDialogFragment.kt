@@ -42,7 +42,6 @@ class DetailDialogFragment : BottomSheetDialogFragment() {
         viewModel.isFavorite(game.id).observe(viewLifecycleOwner) { isFavorite ->
             if (isFavorite) favoriteButtonMode()
             binding.btnFavorite.apply {
-
                 addOnCheckedChangeListener { button, isChecked ->
                     if (isChecked) {
                         text = "Remove from favorite"
