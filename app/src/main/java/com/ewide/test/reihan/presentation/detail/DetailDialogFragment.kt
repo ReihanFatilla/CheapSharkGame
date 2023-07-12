@@ -1,7 +1,6 @@
 package com.ewide.test.reihan.presentation.detail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,13 +33,26 @@ class DetailDialogFragment : BottomSheetDialogFragment() {
 
         setUpView()
         setUpSimilarGame()
+        setUpFavorite()
 
         return binding.root
     }
 
+    private fun setUpFavorite() {
+        binding.btnFavorite.apply {
+            addOnCheckedChangeListener { button, isChecked ->
+                if (isChecked) {
+                    text = "Remove from favorite"
+                } else {
+                    text = "Add to favorite"
+                }
+            }
+        }
+    }
+
     private fun setUpSimilarGame() {
         binding.rvSimilarGames.apply {
-            val mAdapter = GameAdapter{
+            val mAdapter = GameAdapter {
                 DetailDialogFragment().also { fragment ->
                     Bundle().also { bundle ->
                         bundle.putParcelable(GAME_BUNDLE, game)
@@ -50,7 +62,7 @@ class DetailDialogFragment : BottomSheetDialogFragment() {
                 }
             }
             viewModel.searchGames(game.title.split(" ")[0])
-            viewModel.gameResponse.observe(viewLifecycleOwner){
+            viewModel.gameResponse.observe(viewLifecycleOwner) {
                 mAdapter.setGames(it)
                 adapter = mAdapter
             }

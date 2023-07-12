@@ -135,18 +135,36 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_favorite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            app:cornerRadius="15dp"
+            android:backgroundTint="@drawable/bg_favorite_button"
+            android:checkable="true"
+            app:icon="@drawable/ic_favorite"
+            app:iconTint="@color/white"
+            app:iconGravity="textStart"
+            app:iconPadding="12dp"
+            android:fontFamily="@font/inter_semibold"
+            android:text="Add to favorite"
+            android:paddingVertical="16dp"
+            app:layout_constraintTop_toBottomOf="@id/cv_game"
+            android:layout_marginTop="16dp"
+            />
+
         <TextView
             android:id="@+id/tv_similar_games"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/inter_bold"
-
             android:text="More Similar Games"
             android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cv_game" />
+            app:layout_constraintTop_toBottomOf="@id/btn_favorite" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_similar_games"
