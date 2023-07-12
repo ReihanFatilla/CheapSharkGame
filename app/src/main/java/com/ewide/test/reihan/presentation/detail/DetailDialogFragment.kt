@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ewide.test.core.domain.model.game.Game
-import com.ewide.test.reihan.adapter.GameAdapter
+import com.ewide.test.reihan.adapter.GameHorizontalAdapter
 import com.ewide.test.reihan.databinding.FragmentDetailDialogBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -54,7 +54,7 @@ class DetailDialogFragment : BottomSheetDialogFragment() {
 
     private fun setUpSimilarGame() {
         binding.rvSimilarGames.apply {
-            val mAdapter = GameAdapter {
+            val mAdapter = GameHorizontalAdapter {
                 DetailDialogFragment().also { fragment ->
                     Bundle().also { bundle ->
                         bundle.putParcelable(GAME_BUNDLE, game)

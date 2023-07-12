@@ -21,6 +21,21 @@ object GameMapper {
         }
     }
 
+    fun List<GameEntity>.mapToDomain(): List<Game> {
+        return map {
+            with(it) {
+                Game(
+                    id = id,
+                    title = title,
+                    salePrice = salePrice,
+                    normalPrice = normalPrice.orEmpty(),
+                    ratingPercent = ratingPercent,
+                    thumbUrl = thumbUrl
+                )
+            }
+        }
+    }
+
     fun Game.toGameEntity(): GameEntity {
         return GameEntity(
             id = id,

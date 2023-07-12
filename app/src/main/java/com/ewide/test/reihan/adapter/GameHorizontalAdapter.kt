@@ -5,11 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ewide.test.core.domain.model.game.Game
-import com.ewide.test.reihan.databinding.ItemGameBinding
 import com.ewide.test.reihan.databinding.ItemHorizontalGameBinding
 
-class GameAdapter(val itemClicked: (game: Game) -> Unit) :
-    RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
+class GameHorizontalAdapter(val itemClicked: (game: Game) -> Unit) :
+    RecyclerView.Adapter<GameHorizontalAdapter.GameViewHolder>() {
 
     private val listGame = ArrayList<Game>()
 
@@ -18,7 +17,7 @@ class GameAdapter(val itemClicked: (game: Game) -> Unit) :
         listGame.addAll(list)
     }
 
-    class GameViewHolder(val binding: ItemGameBinding) :
+    class GameViewHolder(val binding: ItemHorizontalGameBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
@@ -41,7 +40,7 @@ class GameAdapter(val itemClicked: (game: Game) -> Unit) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = GameViewHolder(
-        ItemGameBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        ItemHorizontalGameBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
     override fun getItemCount() = listGame.size
