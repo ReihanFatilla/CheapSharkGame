@@ -1,19 +1,17 @@
-package com.ewide.test.reihan.presentation.home
+package com.ewide.test.reihan.presentation.SortSettings
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.ewide.test.reihan.R
-import com.ewide.test.reihan.databinding.FragmentHomeBinding
 import com.ewide.test.reihan.databinding.FragmentSortDialogBinding
+import com.ewide.test.reihan.presentation.home.HomeViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class SortDialogFragment : DialogFragment() {
+class SortSettingsDialogFragment : DialogFragment() {
 
     private var _binding: FragmentSortDialogBinding? = null
     private val binding get() = _binding as FragmentSortDialogBinding
