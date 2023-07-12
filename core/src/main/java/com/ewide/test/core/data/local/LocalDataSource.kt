@@ -26,12 +26,20 @@ class LocalDataSource(
         gameDao.deleteFavorite(game)
     }
 
-    fun getSortSetting(): Flow<Boolean>{
-        return sortDataStore.getSortSetting()
+    fun getSortOrderSetting(): Flow<Boolean>{
+        return sortDataStore.getSortOrderSetting()
     }
 
-    suspend fun saveThdemeSetting(isDescending: Boolean){
-        sortDataStore.saveSortSetting(isDescending)
+    fun getSortBySetting(): Flow<String> {
+        return sortDataStore.getSortBySetting()
+    }
+
+    suspend fun saveSortOrderSetting(isDescending: Boolean){
+        sortDataStore.saveSortOrderSetting(isDescending)
+    }
+
+    suspend fun saveSortBySetting(sortBy: String){
+        sortDataStore.saveSortBySetting(sortBy)
     }
 
 }

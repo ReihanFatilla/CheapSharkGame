@@ -1,17 +1,11 @@
 package com.ewide.test.core.domain.usecase.home
 
+import androidx.lifecycle.LiveData
 import androidx.paging.PagingData
-import com.ewide.test.core.domain.model.SortType
 import com.ewide.test.core.domain.model.game.Game
 import io.reactivex.rxjava3.core.Flowable
 
 interface HomeUseCase {
-    fun getGames(): Flowable<PagingData<Game>>
-    fun getGamesBySort(sortBy: SortType, descending: Boolean): Flowable<PagingData<Game>>
+    fun getGames(): LiveData<PagingData<Game>>
     fun searchGames(query: String): Flowable<PagingData<Game>>
-    fun searchGamesBySort(
-        query: String,
-        sortBy: SortType,
-        descending: Boolean,
-    ): Flowable<PagingData<Game>>
 }

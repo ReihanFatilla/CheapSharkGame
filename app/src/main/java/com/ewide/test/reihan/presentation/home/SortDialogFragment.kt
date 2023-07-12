@@ -1,5 +1,7 @@
 package com.ewide.test.reihan.presentation.home
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -23,6 +25,8 @@ class SortDialogFragment : DialogFragment() {
         savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentSortDialogBinding.inflate(layoutInflater)
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
         return binding.root
     }
 

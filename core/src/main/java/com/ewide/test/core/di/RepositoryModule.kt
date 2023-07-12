@@ -10,7 +10,7 @@ import com.ewide.test.core.domain.usecase.detail.DetailUseCase
 import org.koin.dsl.module
 
 val repositoryModule = module {
-    single<HomeRepository> { HomeRepositoryImpl(get()) }
+    single<HomeRepository> { HomeRepositoryImpl(get(), get()) }
     single<DetailRepository> { DetailRepositoryImpl(get(), get()) }
     single<FavoriteRepository> { FavoriteRepositoryImpl(get()) }
 }

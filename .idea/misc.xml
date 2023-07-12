@@ -24,6 +24,7 @@
         <entry key="app/src/main/res/layout/fragment_detail_dialog.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_sort_dialog.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/item_characters.xml" value="0.325628662109375" />
         <entry key="app/src/main/res/layout/item_disney.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/item_game.xml" value="0.28125" />

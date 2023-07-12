@@ -26,10 +26,19 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(layoutInflater)
 
+        setUpView()
         setUpSearchView()
         setUpRecyclerView()
 
         return binding.root
+    }
+
+    private fun setUpView() {
+        binding.apply {
+            btnSortSettings.setOnClickListener {
+                SortDialogFragment().show(requireActivity().supportFragmentManager, null)
+            }
+        }
     }
 
     private fun setUpSearchView() {
@@ -60,8 +69,7 @@ class HomeFragment : Fragment() {
                     }
                 }
             }
-            viewModel.getGames()
-            viewModel.gameResponse.observe(viewLifecycleOwner) {
+            viewModel.getGames().observe(viewLifecycleOwner) {
                 mAdapter.submitData(lifecycle, it)
             }
             adapter = mAdapter

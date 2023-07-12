@@ -13,15 +13,8 @@ class HomeViewModel(val homeUseCase: HomeUseCase): ViewModel() {
     private val _gameResponse: MediatorLiveData<PagingData<Game>> = MediatorLiveData()
     val gameResponse: LiveData<PagingData<Game>> get() = _gameResponse
 
-    fun getGames() {
-        val source = LiveDataReactiveStreams.fromPublisher(
-            homeUseCase.getGames().cachedIn(viewModelScope)
-        )
-
-        _gameResponse.addSource(source){
-            _gameResponse.postValue(it)
-            _gameResponse.removeSource(source)
-        }
+    fun getGames(): LiveData<PagingData<Game>> {
+        return homeUseCase.getGames()
     }
 
     fun searchGames(query: String){
