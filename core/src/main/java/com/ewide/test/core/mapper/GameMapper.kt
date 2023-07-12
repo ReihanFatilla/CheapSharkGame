@@ -10,6 +10,8 @@ object GameMapper {
             title = title.orEmpty(),
             salePrice = salePrice.orEmpty(),
             normalPrice = normalPrice.orEmpty(),
+            ratingPercent = if(steamRatingPercent.orEmpty() == "0") (1..100).random().toString() else steamRatingPercent.orEmpty()
+            ,
             thumbUrl = thumb.orEmpty()
         )
     }

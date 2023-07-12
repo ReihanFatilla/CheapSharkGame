@@ -5,5 +5,6 @@ data class Game(
     val title: String,
     val salePrice: String,
     val normalPrice: String,
+    val ratingPercent: String,
     val thumbUrl: String
 )

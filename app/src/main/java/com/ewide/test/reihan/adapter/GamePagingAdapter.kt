@@ -20,6 +20,7 @@ class GamePagingAdapter: PagingDataAdapter<Game, GamePagingAdapter.GameViewHolde
                 tvTitle.text = title
                 tvNormalPrice.text = "$$normalPrice"
                 tvSalePrice.text = "$$salePrice"
+                tvRatingPercent.text = "$ratingPercent%"
                 Glide.with(root.context)
                     .load(thumbUrl)
                     .into(imgGame)

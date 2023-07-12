@@ -30,7 +30,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_bold"
                     android:text="Explore your\nGames!"
-                    android:textColor="@color/black"
+                    android:textColor="@color/primary_color"
                     android:textSize="24sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -41,6 +41,7 @@
                     android:layout_height="30dp"
                     android:layout_marginEnd="16dp"
                     android:src="@drawable/ic_filter"
+                    android:tint="@color/primary_color"
                     app:layout_constraintBottom_toBottomOf="@id/tv_app_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tv_app_title" />

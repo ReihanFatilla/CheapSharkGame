@@ -15,7 +15,7 @@ class HomeViewModel(val homeUseCase: HomeUseCase): ViewModel() {
 
     fun getGames() {
         val source = LiveDataReactiveStreams.fromPublisher(
-            homeUseCase.getGames()
+            homeUseCase.getGames().cachedIn(viewModelScope)
         )
 
         _gameResponse.addSource(source){
