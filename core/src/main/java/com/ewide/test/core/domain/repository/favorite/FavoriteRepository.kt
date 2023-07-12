@@ -7,5 +7,4 @@ import kotlinx.coroutines.flow.Flow
 
 interface FavoriteRepository {
     fun getFavoriteList(): Flow<List<Game>>
-    fun isFavorite(id: String): LiveData<Boolean>
 }

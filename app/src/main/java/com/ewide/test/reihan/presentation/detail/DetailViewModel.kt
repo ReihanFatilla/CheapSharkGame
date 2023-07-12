@@ -31,4 +31,8 @@ class DetailViewModel(val detailUseCase: DetailUseCase): ViewModel() {
         detailUseCase.deleteFavorite(game)
     }
 
+    fun isFavorite(id: String): LiveData<Boolean> {
+        return detailUseCase.isFavorite(id)
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.ewide.test.core.domain.usecase.detail
 
+import androidx.lifecycle.LiveData
 import com.ewide.test.core.data.local.room.entity.GameEntity
 import com.ewide.test.core.domain.model.game.Game
 import com.ewide.test.core.domain.repository.detail.DetailRepository
@@ -16,5 +17,8 @@ class DetaiInteractor(val detailRepository: DetailRepository): DetailUseCase {
 
     override fun deleteFavorite(game: Game) {
         return detailRepository.deleteFavorite(game)
+    }
+    override fun isFavorite(id: String): LiveData<Boolean> {
+        return detailRepository.isFavorite(id)
     }
 }

@@ -39,14 +39,18 @@ class DetailDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun setUpFavorite() {
-        binding.btnFavorite.apply {
-            addOnCheckedChangeListener { button, isChecked ->
-                if (isChecked) {
-                    text = "Remove from favorite"
-                    viewModel.insertFavorite(game)
-                } else {
-                    text = "Add to favorite"
-                    viewModel.deleteFavorite(game)
+        viewModel.isFavorite(game.id).observe(viewLifecycleOwner) { isFavorite ->
+            if (isFavorite) favoriteButtonMode()
+            binding.btnFavorite.apply {
+
+                addOnCheckedChangeListener { button, isChecked ->
+                    if (isChecked) {
+                        text = "Remove from favorite"
+                        viewModel.insertFavorite(game)
+                    } else {
+                        text = "Add to favorite"
+                        viewModel.deleteFavorite(game)
+                    }
                 }
             }
         }
@@ -57,7 +61,7 @@ class DetailDialogFragment : BottomSheetDialogFragment() {
             val mAdapter = GameHorizontalAdapter {
                 DetailDialogFragment().also { fragment ->
                     Bundle().also { bundle ->
-                        bundle.putParcelable(GAME_BUNDLE, game)
+                        bundle.putParcelable(GAME_BUNDLE, it)
                         fragment.arguments = bundle
                         fragment.show(requireActivity().supportFragmentManager, null)
                     }
@@ -87,6 +91,13 @@ class DetailDialogFragment : BottomSheetDialogFragment() {
             btnClose.setOnClickListener {
                 dismiss()
             }
+        }
+    }
+
+    fun favoriteButtonMode() {
+        binding.btnFavorite.apply {
+            isChecked = true
+            text = "Remove from favorite"
         }
     }
 

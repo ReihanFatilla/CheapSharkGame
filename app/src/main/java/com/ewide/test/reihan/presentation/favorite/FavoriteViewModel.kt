@@ -10,8 +10,4 @@ class FavoriteViewModel(val favoriteUseCase: FavoriteUseCase): ViewModel() {
     fun getFavoriteList(): LiveData<List<Game>> {
         return favoriteUseCase.getFavoriteList().asLiveData()
     }
-
-    fun isFavorite(id: String): LiveData<Boolean> {
-        return favoriteUseCase.isFavorite(id)
-    }
 }

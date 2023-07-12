@@ -10,8 +10,4 @@ class FavoriteInteractor(val favoriteRepository: FavoriteRepository): FavoriteUs
     override fun getFavoriteList(): Flow<List<Game>> {
         return favoriteRepository.getFavoriteList()
     }
-
-    override fun isFavorite(id: String): LiveData<Boolean> {
-        return favoriteRepository.isFavorite(id)
-    }
 }

@@ -17,12 +17,4 @@ class FavoriteRepositoryImpl(val localDataSource: LocalDataSource) : FavoriteRep
     override fun getFavoriteList(): Flow<List<Game>> {
         return localDataSource.getFavoriteList().map { it.mapToDomain() }
     }
-
-    override fun isFavorite(id: String): LiveData<Boolean> {
-        return MutableLiveData<Boolean>().also { liveData ->
-            CoroutineScope(Dispatchers.IO).launch {
-                liveData.value = localDataSource.getGameById(id).first() != null
-            }
-        }
-    }
 }
