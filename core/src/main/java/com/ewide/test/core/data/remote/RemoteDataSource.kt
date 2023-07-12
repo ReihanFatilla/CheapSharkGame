@@ -1,11 +1,49 @@
 package com.ewide.test.core.data.remote
 
+import com.ewide.test.core.data.remote.response.GameResponse
 import com.ewide.test.core.data.remote.retrofit.ApiService
+import io.reactivex.rxjava3.core.Flowable
+import io.reactivex.rxjava3.core.Single
 
 class RemoteDataSource(val apiService: ApiService) {
-    fun getGames(pageNumber: Int) = apiService.getGames(pageNumber)
-    fun getGamesBySort(pageNumber: Int, sortBy: String) = apiService.getGamesBySort(pageNumber, sortBy)
-    fun searchGames(query: String, pageNumber: Int) = apiService.searchGames(query, pageNumber)
-    fun searchGames(query: String) = apiService.searchGames(query)
-    fun searchGamesBySort(query: String, sortBy: String, pageNumber: Int) = apiService.searchGamesBySort(query, sortBy, pageNumber)
+
+    fun getGames(pageNumber: Int): Single<List<GameResponse>> {
+        return apiService.getGames(pageNumber = pageNumber)
+    }
+
+    fun getGamesBySort(
+        pageNumber: Int,
+        sortBy: String,
+        descending: Int,
+    ): Single<List<GameResponse>> {
+        return apiService.getGamesBySort(
+            pageNumber = pageNumber,
+            sortBy = sortBy,
+            descending = descending)
+    }
+
+    fun searchGames(query: String, pageNumber: Int): Single<List<GameResponse>> {
+        return apiService.searchGames(
+            query = query,
+            pageNumber = pageNumber
+        )
+    }
+
+    fun searchGames(query: String): Flowable<List<GameResponse>> {
+        return apiService.searchGames(query = query)
+    }
+
+    fun searchGamesBySort(
+        query: String,
+        sortBy: String,
+        pageNumber: Int,
+        descending: Int,
+    ): Single<List<GameResponse>> {
+        return apiService.searchGamesBySort(
+            query = query,
+            sortBy = sortBy,
+            pageNumber = pageNumber,
+            descending = descending
+        )
+    }
 }

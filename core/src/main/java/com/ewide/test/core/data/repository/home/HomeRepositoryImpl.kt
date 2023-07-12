@@ -22,12 +22,18 @@ class HomeRepositoryImpl(val remoteDataSource: RemoteDataSource) : HomeRepositor
         ).flowable
     }
 
-    override fun getGamesBySort(sortBy: SortType): Flowable<PagingData<Game>> {
+    override fun getGamesBySort(sortBy: SortType, descending: Boolean): Flowable<PagingData<Game>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 15
             ),
-            pagingSourceFactory = { GameRxPagingSource { remoteDataSource.getGamesBySort(it, sortBy.name.formatSortType()) } }
+            pagingSourceFactory = {
+                GameRxPagingSource {
+                    remoteDataSource.getGamesBySort(it,
+                        sortBy.name.formatSortType(),
+                        run { if (descending) 0 else 1 })
+                }
+            }
         ).flowable
     }
 
@@ -40,12 +46,22 @@ class HomeRepositoryImpl(val remoteDataSource: RemoteDataSource) : HomeRepositor
         ).flowable
     }
 
-    override fun searchGamesBySort(query: String, sortBy: SortType): Flowable<PagingData<Game>> {
+    override fun searchGamesBySort(
+        query: String,
+        sortBy: SortType,
+        descending: Boolean,
+    ): Flowable<PagingData<Game>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 15
             ),
-            pagingSourceFactory = { GameRxPagingSource { remoteDataSource.searchGamesBySort(query, sortBy.name.formatSortType(), it) } }
+            pagingSourceFactory = {
+                GameRxPagingSource {
+                    remoteDataSource.searchGamesBySort(query, sortBy.name.formatSortType(), it,
+                        run { if (descending) 0 else 1 })
+                }
+            }
         ).flowable
     }
+
 }

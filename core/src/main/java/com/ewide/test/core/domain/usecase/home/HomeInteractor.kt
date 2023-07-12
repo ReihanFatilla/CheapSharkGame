@@ -6,20 +6,24 @@ import com.ewide.test.core.domain.model.game.Game
 import com.ewide.test.core.domain.repository.home.HomeRepository
 import io.reactivex.rxjava3.core.Flowable
 
-class HomeInteractor(val homeRepository: HomeRepository): HomeUseCase {
+class HomeInteractor(val homeRepository: HomeRepository) : HomeUseCase {
     override fun getGames(): Flowable<PagingData<Game>> {
         return homeRepository.getGames()
     }
 
-    override fun getGamesBySort(sortBy: SortType): Flowable<PagingData<Game>> {
-        return homeRepository.getGamesBySort(sortBy)
+    override fun getGamesBySort(sortBy: SortType, descending: Boolean): Flowable<PagingData<Game>> {
+        return homeRepository.getGamesBySort(sortBy, descending)
     }
 
     override fun searchGames(query: String): Flowable<PagingData<Game>> {
         return homeRepository.searchGames(query)
     }
 
-    override fun searchGamesBySort(query: String, sortBy: SortType): Flowable<PagingData<Game>> {
-        return homeRepository.searchGamesBySort(query, sortBy)
+    override fun searchGamesBySort(
+        query: String,
+        sortBy: SortType,
+        descending: Boolean,
+    ): Flowable<PagingData<Game>> {
+        return homeRepository.searchGamesBySort(query, sortBy, descending)
     }
 }

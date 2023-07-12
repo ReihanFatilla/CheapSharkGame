@@ -22,6 +22,8 @@ interface ApiService {
         pageNumber: Int,
         @Query("sortBy")
         sortBy: String,
+        @Query("desc")
+        descending: Int,
         @Query("pageSize")
         pageSize: String = "15",
     ): Single<List<GameResponse>>
@@ -50,6 +52,8 @@ interface ApiService {
         query: String,
         @Query("sortBy")
         sortBy: String,
+        @Query("desc")
+        descending: Int,
         @Query("pageNumber")
         pageNumber: Int,
         @Query("pageSize")
