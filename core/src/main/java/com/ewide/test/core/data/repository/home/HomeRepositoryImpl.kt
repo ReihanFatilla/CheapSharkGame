@@ -1,4 +1,4 @@
-package com.ewide.test.core.data.repository
+package com.ewide.test.core.data.repository.home
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
