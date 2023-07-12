@@ -24,7 +24,9 @@ class GamePagingAdapter(val itemClicked: (game: Game) -> Unit): PagingDataAdapte
                 Glide.with(root.context)
                     .load(thumbUrl)
                     .into(imgGame)
-                itemClicked(this)
+                root.setOnClickListener {
+                    itemClicked(this)
+                }
             }
         }
     }

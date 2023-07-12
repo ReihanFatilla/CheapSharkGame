@@ -1,15 +1,16 @@
 package com.ewide.test.reihan.presentation.detail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.ewide.test.core.domain.model.game.Game
-import com.ewide.test.reihan.R
+import com.ewide.test.reihan.adapter.GameAdapter
 import com.ewide.test.reihan.databinding.FragmentDetailDialogBinding
-import com.ewide.test.reihan.databinding.FragmentHomeBinding
-import com.ewide.test.reihan.presentation.home.HomeViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -29,11 +30,53 @@ class DetailDialogFragment : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentDetailDialogBinding.inflate(layoutInflater)
-        _game = arguments?.getParcelable<Game>(GAME_BUNDLE)
+        _game = arguments?.getParcelable(GAME_BUNDLE)
+
+        setUpView()
+        setUpSimilarGame()
+
         return binding.root
     }
 
-    companion object{
+    private fun setUpSimilarGame() {
+        binding.rvSimilarGames.apply {
+            val mAdapter = GameAdapter{
+                DetailDialogFragment().also { fragment ->
+                    Bundle().also { bundle ->
+                        bundle.putParcelable(GAME_BUNDLE, game)
+                        fragment.arguments = bundle
+                        fragment.show(requireActivity().supportFragmentManager, null)
+                    }
+                }
+            }
+            viewModel.searchGames(game.title.split(" ")[0])
+            viewModel.gameResponse.observe(viewLifecycleOwner){
+                mAdapter.setGames(it)
+                adapter = mAdapter
+            }
+            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+
+        }
+    }
+
+    private fun setUpView() {
+        binding.apply {
+            with(game) {
+                tvTitle.text = title
+                tvNormalPrice.text = "$$normalPrice"
+                tvSalePrice.text = "$$salePrice"
+                tvRatingPercent.text = "$ratingPercent%"
+                Glide.with(root.context)
+                    .load(thumbUrl)
+                    .into(imgGame)
+            }
+            btnClose.setOnClickListener {
+                dismiss()
+            }
+        }
+    }
+
+    companion object {
         const val GAME_BUNDLE = "game_bundle"
     }
 }
