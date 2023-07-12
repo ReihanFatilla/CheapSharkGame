@@ -3,6 +3,7 @@ package com.ewide.test.reihan.presentation.detail
 import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.rxjava3.cachedIn
+import com.ewide.test.core.data.local.room.entity.GameEntity
 import com.ewide.test.core.domain.model.game.Game
 import com.ewide.test.core.domain.usecase.detail.DetailUseCase
 
@@ -21,4 +22,13 @@ class DetailViewModel(val detailUseCase: DetailUseCase): ViewModel() {
             _gameResponse.removeSource(source)
         }
     }
+
+    fun insertFavorite(game: Game){
+        detailUseCase.insertFavorite(game)
+    }
+
+    fun deleteFavorite(game: Game){
+        detailUseCase.deleteFavorite(game)
+    }
+
 }

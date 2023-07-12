@@ -43,8 +43,10 @@ class DetailDialogFragment : BottomSheetDialogFragment() {
             addOnCheckedChangeListener { button, isChecked ->
                 if (isChecked) {
                     text = "Remove from favorite"
+                    viewModel.insertFavorite(game)
                 } else {
                     text = "Add to favorite"
+                    viewModel.deleteFavorite(game)
                 }
             }
         }

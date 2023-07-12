@@ -13,10 +13,12 @@ data class GameEntity (
     val id: String,
     @ColumnInfo(name = "title")
     val title: String,
-    @ColumnInfo(name = "salePrice")
+    @ColumnInfo(name = "sale_price")
     val salePrice: String,
-    @ColumnInfo(name = "normalPrice")
+    @ColumnInfo(name = "normal_price")
     val normalPrice: String,
-    @ColumnInfo(name = "thumbUrl")
+    @ColumnInfo(name = "rating_percent")
+    val ratingPercent: String,
+    @ColumnInfo(name = "thumb_url")
     val thumbUrl: String
 ): Parcelable

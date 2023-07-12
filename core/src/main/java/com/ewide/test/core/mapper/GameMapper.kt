@@ -1,5 +1,6 @@
 package com.ewide.test.core.mapper
 
+import com.ewide.test.core.data.local.room.entity.GameEntity
 import com.ewide.test.core.data.remote.response.GameResponse
 import com.ewide.test.core.domain.model.game.Game
 
@@ -18,5 +19,16 @@ object GameMapper {
                 )
             }
         }
+    }
+
+    fun Game.toGameEntity(): GameEntity {
+        return GameEntity(
+            id = id,
+            title = title,
+            salePrice = salePrice,
+            normalPrice = normalPrice,
+            ratingPercent = ratingPercent,
+            thumbUrl = thumbUrl,
+        )
     }
 }

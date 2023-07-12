@@ -6,6 +6,4 @@ import kotlinx.coroutines.flow.Flow
 
 interface FavoriteUseCase {
     fun getFavoriteList(): Flow<List<Game>>
-    fun insertFavorite(game: GameEntity)
-    fun deleteFavorite(game: GameEntity)
 }
