@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver.OnScrollChangedListener
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ewide.test.reihan.adapter.GamePagingAdapter
@@ -25,13 +26,27 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(layoutInflater)
 
-        setUpView()
+        setUpSearchView()
         setUpRecyclerView()
 
         return binding.root
     }
 
-    private fun setUpView() {
+    private fun setUpSearchView() {
+        binding.svDisney.apply {
+            setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    viewModel.searchGames(query.orEmpty())
+                    return true
+                }
+
+                override fun onQueryTextChange(query: String?): Boolean {
+                    viewModel.searchGames(query.orEmpty())
+                    return true
+                }
+
+            })
+        }
     }
 
     private fun setUpRecyclerView() {

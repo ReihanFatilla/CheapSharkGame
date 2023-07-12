@@ -5,12 +5,13 @@ import androidx.paging.PagingState
 import androidx.paging.rxjava3.RxPagingSource
 import com.ewide.test.core.data.local.room.database.GameDatabase
 import com.ewide.test.core.data.remote.RemoteDataSource
+import com.ewide.test.core.data.remote.response.GameResponse
 import com.ewide.test.core.domain.model.game.Game
 import com.ewide.test.core.mapper.GameMapper.mapToGame
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class GameRxPagingSource(val remoteDataSource: RemoteDataSource) : RxPagingSource<Int, Game>() {
+class GameRxPagingSource(val gameResponse: (Int) -> Single<List<GameResponse>>) : RxPagingSource<Int, Game>() {
     override fun getRefreshKey(state: PagingState<Int, Game>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)
@@ -21,7 +22,7 @@ class GameRxPagingSource(val remoteDataSource: RemoteDataSource) : RxPagingSourc
     override fun loadSingle(params: LoadParams<Int>): Single<LoadResult<Int, Game>> {
         val position = params.key ?: 1
 
-        return remoteDataSource.getGames(position)
+        return gameResponse(position)
             .subscribeOn(Schedulers.io())
             .map { response ->
                 val games = response.map { it.mapToGame() }

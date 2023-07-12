@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="20dp"
+    app:cardCornerRadius="15dp"
     android:clickable="true"
     android:focusable="true"
     app:cardElevation="0dp"
@@ -19,7 +19,7 @@
             android:id="@+id/cv_game"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            app:cardCornerRadius="20dp"
+            app:cardCornerRadius="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">

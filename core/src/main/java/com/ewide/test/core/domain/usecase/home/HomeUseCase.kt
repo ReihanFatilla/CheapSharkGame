@@ -6,4 +6,5 @@ import io.reactivex.rxjava3.core.Flowable
 
 interface HomeUseCase {
     fun getGames(): Flowable<PagingData<Game>>
+    fun searchGames(query: String): Flowable<PagingData<Game>>
 }

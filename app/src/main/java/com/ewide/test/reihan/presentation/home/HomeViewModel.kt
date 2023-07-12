@@ -24,4 +24,15 @@ class HomeViewModel(val homeUseCase: HomeUseCase): ViewModel() {
         }
     }
 
+    fun searchGames(query: String){
+        val source = LiveDataReactiveStreams.fromPublisher(
+            homeUseCase.searchGames(query).cachedIn(viewModelScope)
+        )
+
+        _gameResponse.addSource(source){
+            _gameResponse.postValue(it)
+            _gameResponse.removeSource(source)
+        }
+    }
+
 }
