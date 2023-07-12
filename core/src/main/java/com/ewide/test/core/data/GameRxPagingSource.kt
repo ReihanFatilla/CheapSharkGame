@@ -25,7 +25,7 @@ class GameRxPagingSource(val gameResponse: (Int) -> Single<List<GameResponse>>) 
         return gameResponse(position)
             .subscribeOn(Schedulers.io())
             .map { response ->
-                val games = response.map { it.mapToGame() }
+                val games = response.mapToGame()
                 val nextKey = if (games.isEmpty()) null else position + 1
                 val prevKey = if (position == 1) null else position - 1
                 toLoadResult(games, prevKey, nextKey)
