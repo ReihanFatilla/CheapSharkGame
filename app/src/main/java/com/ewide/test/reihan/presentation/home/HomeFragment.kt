@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewTreeObserver.OnScrollChangedListener
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ewide.test.reihan.adapter.GamePagingAdapter
 import com.ewide.test.reihan.databinding.FragmentHomeBinding
+import com.ewide.test.reihan.presentation.detail.DetailDialogFragment
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -34,7 +34,7 @@ class HomeFragment : Fragment() {
 
     private fun setUpSearchView() {
         binding.svDisney.apply {
-            setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     viewModel.searchGames(query.orEmpty())
                     return true
@@ -51,9 +51,17 @@ class HomeFragment : Fragment() {
 
     private fun setUpRecyclerView() {
         binding.rvGames.apply {
-            val mAdapter = GamePagingAdapter()
+            val mAdapter = GamePagingAdapter { game ->
+                DetailDialogFragment().also { fragment ->
+                    Bundle().also { bundle ->
+                        bundle.putParcelable(DetailDialogFragment.GAME_BUNDLE, game)
+                        fragment.arguments = bundle
+                        fragment.show(requireActivity().supportFragmentManager, null)
+                    }
+                }
+            }
             viewModel.getGames()
-            viewModel.gameResponse.observe(viewLifecycleOwner){
+            viewModel.gameResponse.observe(viewLifecycleOwner) {
                 mAdapter.submitData(lifecycle, it)
             }
             adapter = mAdapter

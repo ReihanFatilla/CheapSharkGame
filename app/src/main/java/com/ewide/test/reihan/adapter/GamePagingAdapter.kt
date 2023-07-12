@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.ewide.test.core.domain.model.game.Game
 import com.ewide.test.reihan.databinding.ItemGameBinding
 
-class GamePagingAdapter: PagingDataAdapter<Game, GamePagingAdapter.GameViewHolder>(DIFF_CALLBACK) {
+class GamePagingAdapter(val itemClicked: (game: Game) -> Unit): PagingDataAdapter<Game, GamePagingAdapter.GameViewHolder>(DIFF_CALLBACK) {
 
     class GameViewHolder(val binding: ItemGameBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -24,6 +24,7 @@ class GamePagingAdapter: PagingDataAdapter<Game, GamePagingAdapter.GameViewHolde
                 Glide.with(root.context)
                     .load(thumbUrl)
                     .into(imgGame)
+                itemClicked(this)
             }
         }
     }
