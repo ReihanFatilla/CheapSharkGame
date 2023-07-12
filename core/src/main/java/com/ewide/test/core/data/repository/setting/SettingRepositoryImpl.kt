@@ -2,22 +2,29 @@ package com.ewide.test.core.data.repository.setting
 
 import com.ewide.test.core.data.local.LocalDataSource
 import com.ewide.test.core.domain.repository.setting.SettingRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 
 class SettingRepositoryImpl(val localDataSource: LocalDataSource): SettingRepository {
     override fun getSortOrderSetting(): Flow<Boolean> {
-        TODO("Not yet implemented")
+        return localDataSource.getSortOrderSetting()
     }
 
     override fun getSortBySetting(): Flow<String> {
-        TODO("Not yet implemented")
+        return localDataSource.getSortBySetting()
     }
 
     override suspend fun saveSortOrderSetting(isDescending: Boolean) {
-        TODO("Not yet implemented")
+        CoroutineScope(Dispatchers.IO).launch {
+            localDataSource.saveSortOrderSetting(isDescending)
+        }
     }
 
     override suspend fun saveSortBySetting(sortBy: String) {
-        TODO("Not yet implemented")
+        CoroutineScope(Dispatchers.IO).launch {
+            localDataSource.saveSortBySetting(sortBy)
+        }
     }
 }
