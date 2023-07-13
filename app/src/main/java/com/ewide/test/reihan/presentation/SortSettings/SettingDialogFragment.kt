@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
-import android.widget.RadioGroup
 import androidx.fragment.app.DialogFragment
 import com.ewide.test.reihan.databinding.FragmentSettingDialogBinding
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -27,16 +26,41 @@ class SettingDialogFragment : DialogFragment() {
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         setUpSortByRadio()
+        setUpSortOrderRadio()
 
         return binding.root
     }
 
+    private fun setUpSortOrderRadio() {
+        binding.rgSortOrder.apply {
+            listSortOrder.forEach { sortOrder ->
+                val radioButton = RadioButton(context)
+                viewModel.getSortOrderSetting().observe(viewLifecycleOwner) { isDescending ->
+                    if(!isDescending && sortOrder != "Descending") radioButton.isChecked = true
+                    if(isDescending && sortOrder != "Ascending") radioButton.isChecked = true
+                }
+                radioButton.text = sortOrder
+                radioButton.setOnClickListener {
+                    val isDescending = sortOrder == "Descending"
+                    viewModel.saveSortOrderSetting(isDescending)
+                }
+                addView(radioButton)
+            }
+        }
+    }
+
     private fun setUpSortByRadio() {
         binding.rgSortBy.apply {
-            
-            setOnCheckedChangeListener { _, checkedId ->
-                val radioButton = findViewById<RadioButton>(checkedId)
-                viewModel.saveSortBySetting(radioButton.text.toString())
+            listSortBy.forEach { sortBy ->
+                val radioButton = RadioButton(context)
+                viewModel.getSortBySetting().observe(viewLifecycleOwner) {
+                    radioButton.isChecked = it == sortBy
+                }
+                radioButton.text = sortBy
+                radioButton.setOnClickListener {
+                    viewModel.saveSortBySetting(sortBy)
+                }
+                addView(radioButton)
             }
         }
     }
@@ -44,5 +68,19 @@ class SettingDialogFragment : DialogFragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        val listSortBy = listOf(
+            "Title",
+            "Savings",
+            "Price",
+            "Metacritic",
+            "Reviews",
+            "Release",
+            "Store",
+            "Recent"
+        )
+        val listSortOrder = listOf("Ascending", "Descending")
     }
 }

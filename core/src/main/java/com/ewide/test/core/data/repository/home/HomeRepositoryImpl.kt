@@ -12,7 +12,6 @@ import com.ewide.test.core.data.remote.RemoteDataSource
 import com.ewide.test.core.domain.model.game.Game
 import com.ewide.test.core.domain.repository.home.HomeRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -38,9 +37,9 @@ class HomeRepositoryImpl(
                     pagingSourceFactory = {
                         GameRxPagingSource { pageNumber ->
                             remoteDataSource.getGamesBySort(
-                                pageNumber =  pageNumber,
-                                sortBy =  sortBy,
-                                descending =  isDescending)
+                                pageNumber = pageNumber,
+                                sortBy = sortBy,
+                                descending = isDescending)
                         }
                     }
                 ).flowable
@@ -60,6 +59,7 @@ class HomeRepositoryImpl(
         val liveData = MutableLiveData<PagingData<Game>>()
 
         CoroutineScope(Dispatchers.IO).launch {
+
             val sortByFlow = localDataSource.getSortBySetting()
             val sortOrderFlow = localDataSource.getSortOrderSetting()
             combine(sortByFlow, sortOrderFlow) { sortBy, sortOrder ->
@@ -72,19 +72,22 @@ class HomeRepositoryImpl(
                         GameRxPagingSource { pageNumber ->
                             remoteDataSource.searchGamesBySort(
                                 query = query,
-                                pageNumber =  pageNumber,
-                                sortBy =  sortBy,
-                                descending =  isDescending)
+                                pageNumber = pageNumber,
+                                sortBy = sortBy,
+                                descending = isDescending
+                            )
                         }
                     }
                 ).flowable
             }.collect {
-                it.subscribeOn(Schedulers.io())
+                it
+                    .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe {
-                        liveData.postValue(it)
+                    .subscribe { pagingData ->
+                        liveData.postValue(pagingData)
                     }
             }
+
         }
 
         return liveData

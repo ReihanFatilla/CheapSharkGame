@@ -32,57 +32,7 @@
             android:id="@+id/rg_sort_by"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-                <RadioButton
-                    android:id="@+id/rb_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Title" />
-
-                <RadioButton
-                    android:id="@+id/rb_savings"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Savings" />
-
-                <RadioButton
-                    android:id="@+id/rb_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Price" />
-
-                <RadioButton
-                    android:id="@+id/rb_metacritic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Metacritic" />
-
-                <RadioButton
-                    android:id="@+id/rb_reviews"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Reviews" />
-
-                <RadioButton
-                    android:id="@+id/rb_release"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Release" />
-
-                <RadioButton
-                    android:id="@+id/rb_store"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Store" />
-
-                <RadioButton
-                    android:id="@+id/rb_recent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Recent" />
-
-        </RadioGroup>
+            android:orientation="vertical" />
 
         <TextView
             android:id="@+id/tv_sort_order_title"
@@ -97,21 +47,7 @@
             android:id="@+id/rg_sort_order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/rb_ascending"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ascending" />
-
-            <RadioButton
-                android:id="@+id/rb_descending"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Descending" />
-
-        </RadioGroup>
+            android:orientation="horizontal" />
 
     </LinearLayout>
 

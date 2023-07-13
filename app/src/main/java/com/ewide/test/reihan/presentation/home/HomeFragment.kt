@@ -1,6 +1,7 @@
 package com.ewide.test.reihan.presentation.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import com.ewide.test.reihan.adapter.GamePagingAdapter
 import com.ewide.test.reihan.databinding.FragmentHomeBinding
 import com.ewide.test.reihan.presentation.SortSettings.SettingDialogFragment
 import com.ewide.test.reihan.presentation.detail.DetailDialogFragment
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -44,14 +46,14 @@ class HomeFragment : Fragment() {
 
     private fun setUpSearchView() {
         binding.svDisney.apply {
+
             setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
-                    viewModel.searchGames(query.orEmpty())
                     return true
                 }
 
-                override fun onQueryTextChange(query: String?): Boolean {
-                    viewModel.searchGames(query.orEmpty())
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    viewModel.searchGames(newText.orEmpty())
                     return true
                 }
 

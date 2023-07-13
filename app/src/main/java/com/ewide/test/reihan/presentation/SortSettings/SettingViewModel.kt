@@ -6,8 +6,8 @@ import androidx.lifecycle.asLiveData
 import com.ewide.test.core.domain.usecase.setting.SettingUseCase
 
 class SettingViewModel(val settingUseCase: SettingUseCase): ViewModel() {
-    fun getSortOrderSetting(): LiveData<String> {
-        return settingUseCase.getSortBySetting().asLiveData()
+    fun getSortOrderSetting(): LiveData<Boolean> {
+        return settingUseCase.getSortOrderSetting().asLiveData()
     }
     fun getSortBySetting(): LiveData<String> {
         return settingUseCase.getSortBySetting().asLiveData()
