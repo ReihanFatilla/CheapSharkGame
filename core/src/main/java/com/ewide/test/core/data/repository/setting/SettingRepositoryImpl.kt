@@ -16,13 +16,13 @@ class SettingRepositoryImpl(val localDataSource: LocalDataSource): SettingReposi
         return localDataSource.getSortBySetting()
     }
 
-    override suspend fun saveSortOrderSetting(isDescending: Boolean) {
+    override fun saveSortOrderSetting(isDescending: Boolean) {
         CoroutineScope(Dispatchers.IO).launch {
             localDataSource.saveSortOrderSetting(isDescending)
         }
     }
 
-    override suspend fun saveSortBySetting(sortBy: String) {
+    override fun saveSortBySetting(sortBy: String) {
         CoroutineScope(Dispatchers.IO).launch {
             localDataSource.saveSortBySetting(sortBy)
         }

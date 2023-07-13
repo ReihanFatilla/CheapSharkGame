@@ -12,11 +12,11 @@ class SettingInteractor(val settingRepository: SettingRepository): SettingUseCas
         return settingRepository.getSortBySetting()
     }
 
-    override suspend fun saveSortOrderSetting(isDescending: Boolean) {
+    override fun saveSortOrderSetting(isDescending: Boolean) {
         settingRepository.saveSortOrderSetting(isDescending)
     }
 
-    override suspend fun saveSortBySetting(sortBy: String) {
+    override fun saveSortBySetting(sortBy: String) {
         settingRepository.saveSortBySetting(sortBy)
     }
 }

@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ewide.test.reihan.adapter.GamePagingAdapter
 import com.ewide.test.reihan.databinding.FragmentHomeBinding
-import com.ewide.test.reihan.presentation.SortSettings.SortSettingsDialogFragment
+import com.ewide.test.reihan.presentation.SortSettings.SettingDialogFragment
 import com.ewide.test.reihan.presentation.detail.DetailDialogFragment
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
     private fun setUpView() {
         binding.apply {
             btnSortSettings.setOnClickListener {
-                SortSettingsDialogFragment().show(requireActivity().supportFragmentManager, null)
+                SettingDialogFragment().show(requireActivity().supportFragmentManager, null)
             }
         }
     }
