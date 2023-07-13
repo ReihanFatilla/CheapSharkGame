@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="28dp"
-        android:paddingTop="36dp">
+        android:paddingTop="36dp"
+        android:clipToPadding="false">
 
         <TextView
             android:id="@+id/tv_app_title"
