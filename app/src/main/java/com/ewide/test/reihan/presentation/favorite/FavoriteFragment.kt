@@ -44,6 +44,7 @@ class FavoriteFragment : Fragment() {
             }
 
             viewModel.getFavoriteList().observe(viewLifecycleOwner) {
+                binding.llFavoriteEmpty.visibility = if(it.isNullOrEmpty()) View.VISIBLE else View.GONE
                 adapter = mAdapter
                 mAdapter.setGames(it)
             }

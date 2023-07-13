@@ -1,12 +1,18 @@
 package com.ewide.test.reihan.presentation.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.paging.LoadState
+import androidx.paging.PagingData
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ewide.test.core.domain.model.game.Game
+import com.ewide.test.reihan.R
 import com.ewide.test.reihan.adapter.GamePagingAdapter
 import com.ewide.test.reihan.adapter.PagingLoadingAdapter
 import com.ewide.test.reihan.databinding.FragmentHomeBinding
@@ -52,7 +58,13 @@ class HomeFragment : Fragment() {
                 }
 
                 override fun onQueryTextChange(newText: String?): Boolean {
-                    viewModel.searchGames(newText.orEmpty())
+
+                    handler.removeCallbacksAndMessages(null)
+                    handler.postDelayed({
+
+                        viewModel.searchGames(newText.orEmpty())
+                    }, 300)
+
                     return true
                 }
 
@@ -79,7 +91,33 @@ class HomeFragment : Fragment() {
             adapter = mAdapter.withLoadStateFooter(
                 footer = PagingLoadingAdapter()
             )
+
+            binding.apply {
+                mAdapter.addLoadStateListener { loadState ->
+                    val isEmpty =
+                        loadState.refresh is LoadState.NotLoading && (adapter as ConcatAdapter).itemCount == 0
+                    if (isEmpty) {
+                        tvStateMessage.text = "Sorry, Game is not found"
+                        imgMessageIcon.setImageResource(R.drawable.ic_close)
+                        llStateMessage.visibility = View.VISIBLE
+                    } else if ((adapter as ConcatAdapter).itemCount == 0) {
+                        llStateMessage.visibility = View.VISIBLE
+                    } else {
+                        llStateMessage.visibility = View.GONE
+                    }
+                }
+            }
+
             layoutManager = LinearLayoutManager(context)
+        }
+    }
+
+    private fun setUpStateMessage(pagingData: PagingData<Game>?) {
+        binding.apply {
+            if (pagingData != null) {
+                Log.i("oketest", "setUpStateMessage: jalan 1")
+
+            } else Log.i("oketest", "setUpStateMessage: jalan 2")
         }
     }
 

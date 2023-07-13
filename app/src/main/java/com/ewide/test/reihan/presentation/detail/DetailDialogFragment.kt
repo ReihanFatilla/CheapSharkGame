@@ -57,6 +57,7 @@ class DetailDialogFragment : BottomSheetDialogFragment() {
 
     private fun setUpSimilarGame() {
         binding.rvSimilarGames.apply {
+            addVeiledItems(5)
             val mAdapter = GameHorizontalAdapter {
                 DetailDialogFragment().also { fragment ->
                     Bundle().also { bundle ->
@@ -68,11 +69,10 @@ class DetailDialogFragment : BottomSheetDialogFragment() {
             }
             viewModel.searchGames(game.title.split(" ")[0])
             viewModel.gameResponse.observe(viewLifecycleOwner) {
+                if(it.isNullOrEmpty()) veil() else unVeil()
                 mAdapter.setGames(it)
-                adapter = mAdapter
+                setAdapter(mAdapter, LinearLayoutManager(context, RecyclerView.HORIZONTAL, false))
             }
-            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-
         }
     }
 

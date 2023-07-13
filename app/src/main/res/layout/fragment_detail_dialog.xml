@@ -139,20 +139,19 @@
             android:id="@+id/btn_favorite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            app:cornerRadius="15dp"
+            android:layout_marginTop="16dp"
             android:backgroundTint="@drawable/bg_favorite_button"
             android:checkable="true"
+            android:fontFamily="@font/inter_semibold"
+            android:paddingVertical="16dp"
+            android:text="Add to favorite"
+            android:textColor="@color/white"
+            app:cornerRadius="15dp"
             app:icon="@drawable/ic_favorite"
-            app:iconTint="@color/white"
             app:iconGravity="textStart"
             app:iconPadding="12dp"
-            android:fontFamily="@font/inter_semibold"
-            android:text="Add to favorite"
-            android:paddingVertical="16dp"
-            app:layout_constraintTop_toBottomOf="@id/cv_game"
-            android:layout_marginTop="16dp"
-            />
+            app:iconTint="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/cv_game" />
 
         <TextView
             android:id="@+id/tv_similar_games"
@@ -166,7 +165,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_favorite" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.skydoves.androidveil.VeilRecyclerFrameView
             android:id="@+id/rv_similar_games"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -175,9 +174,14 @@
             android:clipToPadding="false"
             android:orientation="horizontal"
             android:paddingHorizontal="20dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/tv_similar_games"
-            tools:listitem="@layout/item_horizontal_game" />
+            app:veilFrame_veiled="true"
+            app:veilFrame_baseAlpha="0.6"
+            app:veilFrame_baseColor="@android:color/holo_green_dark"
+            app:veilFrame_highlightAlpha="1.0"
+            app:veilFrame_highlightColor="@android:color/holo_green_light"
+            app:veilFrame_layout="@layout/item_horizontal_game"
+            app:veilFrame_shimmerEnable="true" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

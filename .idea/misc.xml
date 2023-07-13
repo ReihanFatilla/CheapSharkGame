@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="app/src/main/res/drawable-v24/cursor_color.xml" value="0.1255" />
         <entry key="app/src/main/res/drawable-v24/favorite_color_selector.xml" value="0.1255" />
         <entry key="app/src/main/res/drawable/bg_favorite_button.xml" value="0.1255" />

@@ -82,4 +82,34 @@
         app:layout_constraintTop_toBottomOf="@id/sv_disney"
         tools:listitem="@layout/item_game" />
 
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/ll_state_message"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+        <ImageView
+            android:id="@+id/img_message_icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="120dp"
+            android:src="@drawable/ic_game"
+            app:tint="@color/gray" />
+
+        <TextView
+            android:id="@+id/tv_state_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please wait for Your Result\nor it may be went wrong"
+            android:fontFamily="@font/inter_semibold"
+            android:textColor="@color/gray"
+            android:textSize="15sp"
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
