@@ -7,10 +7,6 @@ import io.reactivex.rxjava3.core.Single
 
 class RemoteDataSource(val apiService: ApiService) {
 
-    fun getGames(pageNumber: Int): Single<List<GameResponse>> {
-        return apiService.getGames(pageNumber = pageNumber)
-    }
-
     fun getGamesBySort(
         pageNumber: Int,
         sortBy: String,
@@ -35,8 +31,8 @@ class RemoteDataSource(val apiService: ApiService) {
 
     fun searchGamesBySort(
         query: String,
-        sortBy: String,
         pageNumber: Int,
+        sortBy: String,
         descending: Int,
     ): Single<List<GameResponse>> {
         return apiService.searchGamesBySort(

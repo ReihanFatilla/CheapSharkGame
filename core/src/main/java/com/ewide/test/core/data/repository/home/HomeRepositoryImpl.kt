@@ -36,10 +36,11 @@ class HomeRepositoryImpl(
                         pageSize = 15
                     ),
                     pagingSourceFactory = {
-                        GameRxPagingSource {
-                            remoteDataSource.getGamesBySort(it,
-                                sortBy,
-                                isDescending)
+                        GameRxPagingSource { pageNumber ->
+                            remoteDataSource.getGamesBySort(
+                                pageNumber =  pageNumber,
+                                sortBy =  sortBy,
+                                descending =  isDescending)
                         }
                     }
                 ).flowable
@@ -55,13 +56,38 @@ class HomeRepositoryImpl(
         return liveData
     }
 
-    override fun searchGames(query: String): Flowable<PagingData<Game>> {
-        return Pager(
-            config = PagingConfig(
-                pageSize = 15
-            ),
-            pagingSourceFactory = { GameRxPagingSource { remoteDataSource.searchGames(query, it) } }
-        ).flowable
+    override fun searchGames(query: String): LiveData<PagingData<Game>> {
+        val liveData = MutableLiveData<PagingData<Game>>()
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val sortByFlow = localDataSource.getSortBySetting()
+            val sortOrderFlow = localDataSource.getSortOrderSetting()
+            combine(sortByFlow, sortOrderFlow) { sortBy, sortOrder ->
+                val isDescending = if (sortOrder) 1 else 0
+                Pager(
+                    config = PagingConfig(
+                        pageSize = 15
+                    ),
+                    pagingSourceFactory = {
+                        GameRxPagingSource { pageNumber ->
+                            remoteDataSource.searchGamesBySort(
+                                query = query,
+                                pageNumber =  pageNumber,
+                                sortBy =  sortBy,
+                                descending =  isDescending)
+                        }
+                    }
+                ).flowable
+            }.collect {
+                it.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe {
+                        liveData.postValue(it)
+                    }
+            }
+        }
+
+        return liveData
     }
 
 }

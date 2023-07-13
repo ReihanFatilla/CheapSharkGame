@@ -11,7 +11,7 @@ class HomeInteractor(val homeRepository: HomeRepository) : HomeUseCase {
         return homeRepository.getGames()
     }
 
-    override fun searchGames(query: String): Flowable<PagingData<Game>> {
+    override fun searchGames(query: String): LiveData<PagingData<Game>> {
         return homeRepository.searchGames(query)
     }
 }

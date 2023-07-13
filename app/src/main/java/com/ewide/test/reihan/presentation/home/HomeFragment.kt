@@ -70,7 +70,8 @@ class HomeFragment : Fragment() {
                     }
                 }
             }
-            viewModel.getGames().observe(viewLifecycleOwner) {
+            viewModel.getGames()
+            viewModel.gameResponse.observe(viewLifecycleOwner) {
                 mAdapter.submitData(lifecycle, it)
             }
             adapter = mAdapter

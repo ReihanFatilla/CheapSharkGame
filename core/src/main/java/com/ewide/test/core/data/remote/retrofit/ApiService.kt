@@ -9,14 +9,6 @@ import retrofit2.http.Query
 interface ApiService {
 
     @GET("deals")
-    fun getGames(
-        @Query("pageNumber")
-        pageNumber: Int,
-        @Query("pageSize")
-        pageSize: String = "15",
-    ): Single<List<GameResponse>>
-
-    @GET("deals")
     fun getGamesBySort(
         @Query("pageNumber")
         pageNumber: Int,
