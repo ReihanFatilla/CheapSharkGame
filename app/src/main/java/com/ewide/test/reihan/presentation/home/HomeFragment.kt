@@ -1,7 +1,6 @@
 package com.ewide.test.reihan.presentation.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +8,10 @@ import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ewide.test.reihan.adapter.GamePagingAdapter
+import com.ewide.test.reihan.adapter.PagingLoadingAdapter
 import com.ewide.test.reihan.databinding.FragmentHomeBinding
 import com.ewide.test.reihan.presentation.SortSettings.SettingDialogFragment
 import com.ewide.test.reihan.presentation.detail.DetailDialogFragment
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -72,11 +71,14 @@ class HomeFragment : Fragment() {
                     }
                 }
             }
+
             viewModel.getGames()
             viewModel.gameResponse.observe(viewLifecycleOwner) {
                 mAdapter.submitData(lifecycle, it)
             }
-            adapter = mAdapter
+            adapter = mAdapter.withLoadStateFooter(
+                footer = PagingLoadingAdapter()
+            )
             layoutManager = LinearLayoutManager(context)
         }
     }

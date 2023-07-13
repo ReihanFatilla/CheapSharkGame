@@ -30,6 +30,7 @@
         <entry key="app/src/main/res/layout/item_disney.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/item_game.xml" value="0.28125" />
         <entry key="app/src/main/res/layout/item_horizontal_game.xml" value="0.28125" />
+        <entry key="app/src/main/res/layout/paging_loading.xml" value="0.28125" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.28229166666666666" />
       </map>
     </option>
