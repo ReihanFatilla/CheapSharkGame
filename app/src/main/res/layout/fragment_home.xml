@@ -104,7 +104,7 @@
             android:id="@+id/tv_state_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Please wait for Your Result\nor it may be went wrong"
+            android:text="Please wait for Your Game"
             android:fontFamily="@font/inter_semibold"
             android:textColor="@color/gray"
             android:textSize="15sp"
